@@ -105,7 +105,10 @@
 }
 .container .card .content-duration {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+.container .card .content-duration audio {
+  display: none;
 }
 .container .card .content-duration .line-main {
   width: 100%;
@@ -122,10 +125,18 @@
   width: 10%;
   position: absolute;
 }
+.container .card .content-duration .progres__range {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  height: 3.5px;
+}
 .container .card .content-duration-time {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
 }
 .container .card .content-duration-time h3 {
   font-size: 12px;
