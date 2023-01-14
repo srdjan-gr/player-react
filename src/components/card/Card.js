@@ -28,16 +28,16 @@ const Card = () => {
 
                     <div className='content-controls'>
                         <div className='content-controls-container'>
-                            <FaBackward className='icon-m' />
-                            <span className='ring p-24 t2'></span>
+                            <FaBackward className='icon-m ' />
+                            <span className='neon__ring p-22 t2 '></span>
                         </div>
                         <div className='content-controls-container'>
                             <FaPlay className='icon-xl' />
-                            <span className='ring p-28 t3'></span>
+                            <span className='neon__ring p-26 t3'></span>
                         </div>
                         <div className='content-controls-container'>
                             <FaForward className='icon-m' />
-                            <span className='ring p-24 t1'></span>
+                            <span className='neon__ring p-22 t1'></span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,10 @@ const Card = () => {
                     <span className="sound__control-line-moving"></span>
                 </div>
 
-                <div className="sound-icon"><FaVolumeUp className='icon-m' /></div>
+                <div className="sound-icon">
+                    <FaVolumeUp className='icon-m' />
+                    <span className='neon__ring p-22'></span>
+                </div>
 
             </article>
         </section>

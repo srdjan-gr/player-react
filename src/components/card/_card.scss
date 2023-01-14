@@ -19,12 +19,12 @@
     cursor: pointer;
 }
 
-.p-28{
-    padding: 28px;
+.p-26{
+    padding: 26px;
 }
 
-.p-24{
-    padding: 24px;
+.p-22{
+    padding: 22px;
 }
 
 .t1{
@@ -37,6 +37,23 @@
 
 .t3{
     transform: translateX(-4px);
+}
+
+.neon__ring{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid rgb(192, 255, 218);
+    box-shadow:0px 0px 18px rgba($color: rgb(192, 255, 218), $alpha: 1);
+    transition: all .15s ease-in;
+    opacity: 0;
+    position: absolute;
+
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
 }
 
 .container {
@@ -139,23 +156,6 @@
                     align-items: center;
                     justify-content: center; 
                     position: relative;
-
-                    .ring{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        border-radius: 50%;
-                        border: 3px solid rgb(192, 255, 218);
-                        box-shadow:0px 0px 15px rgba($color: rgb(192, 255, 218), $alpha: 1);
-                        transition: all .2s ease-in;
-                        opacity: 0;
-                        position: absolute;
-
-                        &:hover {
-                            opacity: 1;
-                            cursor: pointer;
-                        }
-                    }
                 }
             }
         }  
