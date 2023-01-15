@@ -91,7 +91,6 @@
   width: 100%;
 }
 .container .card .content-info {
-  line-height: 1.2;
   margin-bottom: 10px;
 }
 .container .card .content-info h1 {
@@ -105,10 +104,7 @@
 }
 .container .card .content-duration {
   position: relative;
-  margin-bottom: 20px;
-}
-.container .card .content-duration audio {
-  display: none;
+  margin-bottom: 30px;
 }
 .container .card .content-duration .line-main {
   width: 100%;
@@ -116,14 +112,14 @@
   background-color: #fff;
   border-radius: 10px;
   position: absolute;
+  cursor: pointer;
 }
 .container .card .content-duration .line-moving {
-  width: 100%;
   height: 3px;
   background-color: #242323;
   border-radius: 10px;
-  width: 10%;
   position: absolute;
+  pointer-events: none;
 }
 .container .card .content-duration .progres__range {
   -moz-appearance: none;
@@ -137,6 +133,7 @@
 .container .card .content-duration-time {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 .container .card .content-duration-time h3 {
   font-size: 12px;
@@ -182,7 +179,6 @@
 }
 .container .sound__control-line-moving {
   width: 6px;
-  height: 10%;
   background-color: #242323;
   border-radius: 10px;
   position: absolute;
