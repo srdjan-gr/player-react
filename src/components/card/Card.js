@@ -13,11 +13,12 @@ const Card = () => {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [mute, setMute] = useState(false);
-    const [volume, setVolume] = useState(1);
+    const [currentVolume, setCurrentVolume] = useState('');
     const [autoplay, setAutoplay] = useState(false);
 
     const audioElement = useRef();
     const clickRef = useRef();
+    const clickVolumeRef = useRef();
 
 
     const playPause = () => {
@@ -34,16 +35,18 @@ const Card = () => {
     const muteFunction = () => {
         if (mute) {
             setMute(false);
-            audioElement.current.volume = 1;
+            audioElement.current.volume = currentVolume;
+
         } else {
             setMute(true);
+            // Current volume is state for volume before Mute. Unmute returns the volume to CurrentVolume 
+            setCurrentVolume(audioElement.current.volume)
             audioElement.current.volume = 0;
         }
     }
 
 
     const changeSong = () => {
-
 
         let index = songs.findIndex(x => x.title == currentSong.title);
 
@@ -86,12 +89,13 @@ const Card = () => {
         }
     }
 
-
+    // Adding lenght, current time and volume properties on play press to CurrentSong object from  <Audio /> HTML Element Ref
     const onPlaying = () => {
         const duration = audioElement.current.duration;
         const currentTime = audioElement.current.currentTime;
+        const elVolume = audioElement.current.volume;
 
-        setCurrentSong({ ...currentSong, 'progress': currentTime / duration * 100, 'length': duration, 'current': currentTime, })
+        setCurrentSong({ ...currentSong, 'progress': currentTime / duration * 100, 'length': duration, 'current': currentTime, 'currentVolume': elVolume, 'onStartVolume': 1 })
     }
 
 
@@ -104,13 +108,17 @@ const Card = () => {
     }
 
 
+    const changeVolume = (e) => {
+        let height = clickVolumeRef.current.clientHeight;
+        const offset = e.nativeEvent.offsetY;
 
+        const divVolume = offset / height * 100;
+        audioElement.current.volume = divVolume / 100 * currentSong.onStartVolume;
+    }
 
 
     return (
         <section className='container'>
-
-
             <article className='card'>
 
                 {
@@ -170,8 +178,9 @@ const Card = () => {
             <article className='sound'>
 
                 <div className="sound__control">
-                    <span className="sound__control-line-main"></span>
-                    <span className="sound__control-line-moving" style={{ height: '10%' }}></span>
+                    <span className="sound__control-line-main" onClick={changeVolume} ref={clickVolumeRef}>
+                        <span className="sound__control-line-moving" style={{ height: `${currentSong.currentVolume * 100 + '%'}` }}></span>
+                    </span>
                 </div>
 
                 {
@@ -191,7 +200,7 @@ const Card = () => {
                         )
                 }
             </article>
-        </section >
+        </section>
     )
 }
 

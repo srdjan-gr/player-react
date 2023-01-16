@@ -126,15 +126,6 @@
   position: absolute;
   pointer-events: none;
 }
-.container .card .content-duration .progres__range {
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
-  background-color: #fff;
-  border-radius: 10px;
-  width: 100%;
-  height: 3.5px;
-}
 .container .card .content-duration-time {
   display: flex;
   justify-content: space-between;
@@ -169,11 +160,10 @@
   background-color: #e7e7e7;
   border-radius: 80px;
   box-shadow: 0px 0px 40px rgba(85, 85, 85, 0.7);
-  position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 20px;
+  position: relative;
 }
 .container .sound__control-line-main {
   width: 6px;
@@ -181,12 +171,15 @@
   background-color: #fff;
   border-radius: 10px;
   position: absolute;
+  cursor: pointer;
+  transform: rotateZ(180deg);
 }
 .container .sound__control-line-moving {
   width: 6px;
   background-color: #242323;
   border-radius: 10px;
   position: absolute;
+  pointer-events: none;
 }
 .container .sound-icon {
   height: 52px;
