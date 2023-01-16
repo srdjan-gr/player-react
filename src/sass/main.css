@@ -58,12 +58,13 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 25px;
+  justify-content: center;
+  gap: 20px;
 }
 .container .card {
-  width: 320px;
-  height: 420px;
-  border-radius: 20px;
+  width: 300px;
+  height: 400px;
+  border-radius: 18px;
   box-shadow: 0px 0px 40px rgba(85, 85, 85, 0.3);
   background-color: #e7e7e7;
   display: flex;
@@ -80,9 +81,9 @@
   top: -10%;
   left: 50%;
   transform: translate(-50%);
-  width: 240px;
-  height: 240px;
-  border-radius: 10px;
+  width: 225px;
+  height: 225px;
+  border-radius: 8px;
   box-shadow: 0px 0px 40px rgba(85, 85, 85, 0.7);
   -o-object-fit: cover;
      object-fit: cover;
@@ -91,15 +92,19 @@
   width: 100%;
 }
 .container .card .content-info {
-  margin-bottom: 10px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .container .card .content-info h1 {
   text-align: center;
-  font-size: 26px;
+  font-size: 24px;
 }
 .container .card .content-info h2 {
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
 }
 .container .card .content-duration {
@@ -144,7 +149,7 @@
   align-items: center;
   justify-content: center;
   gap: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .container .card .content-controls-container {
   display: flex;
@@ -159,8 +164,8 @@
   gap: 10px;
 }
 .container .sound__control {
-  width: 54px;
-  height: 180px;
+  width: 52px;
+  height: 170px;
   background-color: #e7e7e7;
   border-radius: 80px;
   box-shadow: 0px 0px 40px rgba(85, 85, 85, 0.7);
@@ -168,7 +173,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 .container .sound__control-line-main {
   width: 6px;
@@ -184,11 +189,22 @@
   position: absolute;
 }
 .container .sound-icon {
-  height: 54px;
+  height: 52px;
   background-color: #e7e7e7;
   border-radius: 80px;
   box-shadow: 0px 0px 40px rgba(85, 85, 85, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .icon-rotate {
+    transform: rotateZ(-90deg);
+  }
+  .container .sound {
+    transform: rotateZ(90deg);
+    position: absolute;
+    bottom: 30px;
+  }
 }/*# sourceMappingURL=main.css.map */

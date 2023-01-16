@@ -3,13 +3,52 @@ import { useState, useRef } from 'react'
 import { FaFastForward, FaFastBackward, FaPlay, FaVolumeUp, FaVolumeMute, FaPause } from 'react-icons/fa';
 import { songsData } from '../../data';
 
-import album from '../../img/bob.jpg';
+import noImage from '../../data/covers/No_Image_Available.jpg';
+import image from '../../data/covers/fleke.jpg';
+
+// const imgfdolder = process.env.PUBLIC_URL;
+const slike = process.env.REACT_APP_BACKEND_PRODUCT_IMAGES;
+
+// export const songsData = [
+//     {
+//         id: 1,
+//         title: 'Speed',
+//         artist: 'Billy Idol',
+//         cover: './data/covers/billy-idol-speed.jpg',
+//         song: './data/songs/Billy Idol - Speed.mp3'
+//     },
+//     {
+//         id: 2,
+//         title: 'The Road To Hell',
+//         artist: 'Cris Rea',
+//         cover: './data/covers/The_Road_to_Hell.jpg',
+//         song: './data/songs/Cris Rea - The Road To Hell.MP3'
+//     },
+//     {
+//         id: 3,
+//         title: 'Slatka mala',
+//         artist: 'Fleke',
+//         cover: 'public/data/fleke.jpg',
+//         // cover: './data/covers/fleke.jpg',
+//         // cover: '',
+//         song: './data/songs/Fleke - Slatka mala.mp3'
+//     },
+//     {
+//         id: 4,
+//         title: 'Heroj Ulice',
+//         artist: 'Prljavo Kazaliste',
+//         // cover: './data/covers/Prljavo_kazaliste_-_heroj_ulice_album.jpg',
+//         cover: '../../data/Prljavo_kazaliste_-_heroj_ulice_album.jpg',
+//         song: './data/songs/Prljavo Kazaliste - Heroj Ulice.mp3'
+//     }
+// ]
 
 
 const Card = () => {
 
     const [songs, setSongs] = useState(songsData);
     const [currentSong, setCurrentSong] = useState(songsData[2]);
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [mute, setMute] = useState(false);
     const [volume, setVolume] = useState(1);
@@ -35,6 +74,7 @@ const Card = () => {
             audioElement.current.play();
         }
     }
+
 
     const muteFunction = () => {
         if (mute) {
@@ -109,8 +149,13 @@ const Card = () => {
 
     return (
         <section className='container'>
+
+
             <article className='card'>
-                <img src={album} alt="autor" />
+
+                {
+                    currentSong.cover == '' ? (<img src={noImage} alt='' />) : (<img src={slike + currentSong.cover} />)
+                }
 
 
                 <div className="content">
@@ -121,11 +166,9 @@ const Card = () => {
 
                     <div className='content-duration'>
 
-                        <audio src={currentSong.path} type="audio/mpeg" ref={audioElement} onTimeUpdate={onPlaying} />
+                        <audio src={currentSong.song} type="audio/mpeg" ref={audioElement} onTimeUpdate={onPlaying} />
 
                         {renderTimeDuration()}
-
-                        {/*<input type="range" value={20} min='0' max='100' className='progres__range' id='progresRange' />*/}
 
                         <span className="line-main" onClick={changeProgress} ref={clickRef}>
                             <span className="line-moving" style={{ width: `${currentSong.progress + '%'}` }} ></span>
@@ -175,14 +218,14 @@ const Card = () => {
                     mute == false ?
                         (
                             <div className="sound-icon" onClick={() => muteFunction()}>
-                                <FaVolumeUp className='icon-m' />
+                                <FaVolumeUp className='icon-m icon-rotate' />
                                 <span className='neon__ring p-22'></span>
                             </div>
                         )
                         :
                         (
                             <div className="sound-icon" onClick={() => muteFunction()}>
-                                <FaVolumeMute className='icon-m' />
+                                <FaVolumeMute className='icon-m icon-rotate' />
                                 <span className='neon__ring p-22'></span>
                             </div>
                         )
