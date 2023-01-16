@@ -1,6 +1,6 @@
 # player-react
 Simple music player made with React.js
 
-![Alt text](../../Downloads/Screen%20Shot%202023-01-16%20at%2012.33.58.png)
+![mobile](https://user-images.githubusercontent.com/84479630/212671840-4449a178-d051-41be-8362-d9c0871a63f2.png)
 
-![Alt text](../../Downloads/Screen%20Shot%202023-01-16%20at%2012.34.05.png)
+![desktop](https://user-images.githubusercontent.com/84479630/212671843-4169450c-b237-43d8-9fd5-c0b6b75e6f60.png)
