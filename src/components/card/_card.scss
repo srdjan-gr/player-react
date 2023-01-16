@@ -228,10 +228,12 @@
     }
 
     .container {
+        position: relative;
+
         .sound{
             transform: rotateZ(90deg);
             position: absolute;
-            bottom: 30px;
+            bottom: -165px;
         }
     }
 }

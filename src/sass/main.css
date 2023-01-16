@@ -202,9 +202,12 @@
   .icon-rotate {
     transform: rotateZ(-90deg);
   }
+  .container {
+    position: relative;
+  }
   .container .sound {
     transform: rotateZ(90deg);
     position: absolute;
-    bottom: 30px;
+    bottom: -165px;
   }
 }/*# sourceMappingURL=main.css.map */
