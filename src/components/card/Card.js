@@ -3,46 +3,6 @@ import { useState, useRef } from 'react'
 import { FaFastForward, FaFastBackward, FaPlay, FaVolumeUp, FaVolumeMute, FaPause } from 'react-icons/fa';
 import { songsData } from '../../data';
 
-import noImage from '../../data/covers/No_Image_Available.jpg';
-import image from '../../data/covers/fleke.jpg';
-
-// const imgfdolder = process.env.PUBLIC_URL;
-const slike = process.env.REACT_APP_BACKEND_PRODUCT_IMAGES;
-
-// export const songsData = [
-//     {
-//         id: 1,
-//         title: 'Speed',
-//         artist: 'Billy Idol',
-//         cover: './data/covers/billy-idol-speed.jpg',
-//         song: './data/songs/Billy Idol - Speed.mp3'
-//     },
-//     {
-//         id: 2,
-//         title: 'The Road To Hell',
-//         artist: 'Cris Rea',
-//         cover: './data/covers/The_Road_to_Hell.jpg',
-//         song: './data/songs/Cris Rea - The Road To Hell.MP3'
-//     },
-//     {
-//         id: 3,
-//         title: 'Slatka mala',
-//         artist: 'Fleke',
-//         cover: 'public/data/fleke.jpg',
-//         // cover: './data/covers/fleke.jpg',
-//         // cover: '',
-//         song: './data/songs/Fleke - Slatka mala.mp3'
-//     },
-//     {
-//         id: 4,
-//         title: 'Heroj Ulice',
-//         artist: 'Prljavo Kazaliste',
-//         // cover: './data/covers/Prljavo_kazaliste_-_heroj_ulice_album.jpg',
-//         cover: '../../data/Prljavo_kazaliste_-_heroj_ulice_album.jpg',
-//         song: './data/songs/Prljavo Kazaliste - Heroj Ulice.mp3'
-//     }
-// ]
-
 
 const Card = () => {
 
@@ -154,7 +114,7 @@ const Card = () => {
             <article className='card'>
 
                 {
-                    currentSong.cover == '' ? (<img src={noImage} alt='' />) : (<img src={slike + currentSong.cover} />)
+                    currentSong.cover == '' ? (<img src={songsData[0].cover} alt='' />) : (<img src={currentSong.cover} alt={currentSong.title} />)
                 }
 
 
