@@ -3,6 +3,8 @@ import { useState, useRef } from 'react'
 import { FaFastForward, FaFastBackward, FaPlay, FaVolumeUp, FaVolumeMute, FaPause } from 'react-icons/fa';
 import { songsData } from '../../data';
 
+const noCover = 'data/covers/No_Image_Available.jpg';
+
 
 const Card = () => {
 
@@ -17,13 +19,6 @@ const Card = () => {
     const audioElement = useRef();
     const clickRef = useRef();
 
-
-
-
-
-    // useEffect(() => {
-    //     onPlaying()
-    // }, [isPlaying])
 
     const playPause = () => {
         if (isPlaying) {
@@ -49,12 +44,14 @@ const Card = () => {
 
     const changeSong = () => {
 
+
         let index = songs.findIndex(x => x.title == currentSong.title);
 
         if (index == 0) {
             setCurrentSong(songs[songs.length - 1]);
             audioElement.current.play();
         } else {
+            setIsPlaying(true)
             setCurrentSong(songs[index - 1]);
             audioElement.current.autoplay = true;
         }
@@ -107,6 +104,9 @@ const Card = () => {
     }
 
 
+
+
+
     return (
         <section className='container'>
 
@@ -114,7 +114,7 @@ const Card = () => {
             <article className='card'>
 
                 {
-                    currentSong.cover == '' ? (<img src={songsData[0].cover} alt='' />) : (<img src={currentSong.cover} alt={currentSong.title} />)
+                    currentSong.cover == '' ? (<img src={noCover} alt='' />) : (<img src={currentSong.cover} alt={currentSong.title} />)
                 }
 
 

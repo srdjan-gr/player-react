@@ -1,9 +1,5 @@
 export const songsData = [
     {
-        id: 0,
-        cover: 'data/covers/No_Image_Available.jpg',
-    },
-    {
         id: 1,
         title: 'Speed',
         artist: 'Billy Idol',
