@@ -16,6 +16,9 @@ const Card = () => {
     const [currentVolume, setCurrentVolume] = useState('');
     const [autoplay, setAutoplay] = useState(false);
 
+    const [fullTime, setFullTime] = useState(0);
+    const [playingTime, setPlayingTime] = useState(0);
+
     const audioElement = useRef();
     const clickRef = useRef();
     const clickVolumeRef = useRef();
@@ -61,42 +64,64 @@ const Card = () => {
     }
 
 
-    const renderTimeDuration = () => {
 
-        let fullTime = currentSong.length / 100;
-        let st = fullTime.toFixed(2)
-        let str = st.toString();
 
-        let currentTime = currentSong.current;
+    const timeConversion = (duration, currentTime) => {
 
-        if (!currentTime) {
-            return (
-                <div className='content-duration-time'>
-                    <h3>0:00</h3>
-                    <h3>0:00</h3>
-                </div>
-            )
-        } else {
-            let sct = currentTime.toFixed(0)
-            let cut = str.split('.');
 
-            return (
-                <div className='content-duration-time'>
-                    <h3>0:{sct}</h3>
-                    <h3>{`${cut[0]}:${cut[1]}`}</h3>
-                </div>
-            )
+        let hrs = Math.floor(duration / 3600);
+        let mins = Math.floor((duration % 3600) / 60);
+        let secs = Math.floor(duration % 60);
+
+        let time = ''
+
+        if (hrs > 0) {
+            time += (mins < 10 ? "0" : "");
         }
+
+        time += "" + mins + ":" + (secs < 10 ? "0" : "");
+        time += "" + secs;
+
+        setFullTime(time);
+
+
+
+        let hrsCurr = Math.floor(currentTime / 3600);
+        let minsCurr = Math.floor((currentTime % 3600) / 60);
+        let secsCurr = Math.floor(currentTime % 60);
+
+        let timeCurr = ''
+
+        if (hrsCurr > 0) {
+            timeCurr += (minsCurr < 10 ? "0" : "");
+        }
+
+        timeCurr += "" + minsCurr + ":" + (secsCurr < 10 ? "0" : "");
+        timeCurr += "" + secsCurr;
+
+        setPlayingTime(timeCurr);
+
     }
+
 
     // Adding lenght, current time and volume properties on play press to CurrentSong object from  <Audio /> HTML Element Ref
     const onPlaying = () => {
+
         const duration = audioElement.current.duration;
         const currentTime = audioElement.current.currentTime;
         const elVolume = audioElement.current.volume;
 
         setCurrentSong({ ...currentSong, 'progress': currentTime / duration * 100, 'length': duration, 'current': currentTime, 'currentVolume': elVolume, 'onStartVolume': 1 })
+
+        timeConversion(duration, currentTime)
     }
+
+
+    // function fmtMSS(s) {
+    //     let time = (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s
+
+    //     setFullTime(time)
+    // }
 
 
     const changeProgress = (e) => {
@@ -136,7 +161,19 @@ const Card = () => {
 
                         <audio src={currentSong.song} type="audio/mpeg" ref={audioElement} onTimeUpdate={onPlaying} />
 
-                        {renderTimeDuration()}
+                        {
+                            !currentSong.current ? (
+                                <div className='content-duration-time'>
+                                    <h3>0:00</h3>
+                                    <h3>0:00</h3>
+                                </div>
+                            ) : (
+                                <div className='content-duration-time'>
+                                    <h3>{playingTime}</h3>
+                                    <h3>{fullTime}</h3>
+                                </div>
+                            )
+                        }
 
                         <span className="line-main" onClick={changeProgress} ref={clickRef}>
                             <span className="line-moving" style={{ width: `${currentSong.progress + '%'}` }} ></span>
