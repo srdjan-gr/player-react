@@ -8,4 +8,4 @@ The Build-V2 design features a static rectangular album cover.
 
 ![player-react-art-v1](https://user-images.githubusercontent.com/84479630/212951818-3f188534-040a-47de-af9c-2d116fae29fc.jpg)
 
-![player-react-art](https://user-images.githubusercontent.com/84479630/212861026-c10b8ecb-8921-494b-a9b8-71041a68fbf6.jpg)
+![player-react-art-v2](https://user-images.githubusercontent.com/84479630/212958687-5e5baeb8-0306-44d8-85a3-bb515173d363.jpg)
