@@ -133,13 +133,9 @@ const Card = () => {
     return (
         <section className='container'>
             <article className='card'>
-                <div className={`${isPlaying == false ? 'image' : 'rotation image'}`}>
-                    {
-                        currentSong.cover == '' ? (<img src={noCover} alt='' />) : (<img src={currentSong.lpcover} alt={currentSong.title} />)
-                    }
-                </div>
-
-
+                {
+                    currentSong.cover == '' ? (<img src={noCover} alt='' />) : (<img src={currentSong.cover} alt={currentSong.title} />)
+                }
 
                 <div className="content">
                     <div className='content-info'>
