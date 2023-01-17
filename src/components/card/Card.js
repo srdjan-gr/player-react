@@ -50,7 +50,6 @@ const Card = () => {
 
 
     const changeSong = () => {
-
         let index = songs.findIndex(x => x.title == currentSong.title);
 
         if (index == 0) {
@@ -64,10 +63,7 @@ const Card = () => {
     }
 
 
-
-
     const timeConversion = (duration, currentTime) => {
-
 
         let hrs = Math.floor(duration / 3600);
         let mins = Math.floor((duration % 3600) / 60);
@@ -100,7 +96,6 @@ const Card = () => {
         timeCurr += "" + secsCurr;
 
         setPlayingTime(timeCurr);
-
     }
 
 
@@ -115,13 +110,6 @@ const Card = () => {
 
         timeConversion(duration, currentTime)
     }
-
-
-    // function fmtMSS(s) {
-    //     let time = (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s
-
-    //     setFullTime(time)
-    // }
 
 
     const changeProgress = (e) => {
@@ -159,7 +147,7 @@ const Card = () => {
 
                     <div className='content-duration'>
 
-                        <audio src={currentSong.song} type="audio/mpeg" ref={audioElement} onTimeUpdate={onPlaying} />
+                        <audio src={currentSong.song} type="audio/mpeg" ref={audioElement} onTimeUpdate={onPlaying} onEnded={changeSong} />
 
                         {
                             !currentSong.current ? (
